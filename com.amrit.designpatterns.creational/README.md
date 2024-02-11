@@ -5,15 +5,19 @@
 ## Builder
 
 Introduction:
+
 	- People use it but never create their own.
 	- Used when object creation requires lot of parameters but has to set immutable after creation.
+
 Concepts:
+
 	- Is constructor complex? Lots of parameters/getters/setters?
 	- Force immutability.
 	- Examples: StringBuilder, DocumentBuilder, Locale.Builder
-Why Builder Pattern?
 
-- Immutability: How do we impose immutability to a bean java object? Answer: Remove the setters. But's not the solution. Because here can only set the parameters only once.
+### Why Builder Pattern?
+
+- Immutability: How do we impose immutability to a bean java object? Answer: Remove the setters. But that's not the solution. Because here can only set the parameters only once.
 - How do you force contract on creation of the object? Let's say an object allows three parameters but only two are required. Which two? Can we create 4 constructor for such scenario? This is known as telescoping constructor.
 
 Hence, we need a object whoes job will only be to construct our object.
