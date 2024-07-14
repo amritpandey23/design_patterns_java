@@ -1,9 +1,5 @@
-# Design Pattern Repository
+# Design Patterns
 
-## Creational Design Pattern
+Find all the notes and source code created during my learning journey.
 
-[Read](./com.amrit.designpatterns.creational/README.md)
-
-## Structural Design Pattern
-
-[Read](./com.amrit.designpatterns.structural/README.md)
+Checkout the [homepage](https://amritpandey23.github.io/design_patterns_java/).
