@@ -1,7 +1,6 @@
 package com.amrit.designpatterns.structural.decorator;
 
 public class KeyboardDecorator extends ComputerDecorator {
-
 	public KeyboardDecorator(Computer computer) {
 		super(computer);
 	}
@@ -10,5 +9,4 @@ public class KeyboardDecorator extends ComputerDecorator {
 	public String make() {
 		return computer.make() + " + Keyboard";
 	}
-
 }
