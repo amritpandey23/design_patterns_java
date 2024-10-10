@@ -1,4 +1,5 @@
 - [Introduction](creational/)
+- [Singleton Pattern](creational/singleton.md)
 - [Builder Pattern](creational/builder.md)
 - [Prototype Pattern](creational/prototype.md)
 - [Factory Pattern](creational/factory.md)
