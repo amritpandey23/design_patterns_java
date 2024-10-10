@@ -1,4 +1,4 @@
-package com.amrit.designpatterns.flyweight;
+package com.amrit.designpatterns.structural.flyweight;
 
 public class Item {
 	String itemName;
