@@ -1,5 +1,8 @@
 # Flyweight
 
+> [!NOTE]
+> Find source code [here](https://github.com/amritpandey23/design_patterns_java/tree/master/com.amrit.designpatterns.structural/src/com/amrit/designpatterns/structural/flyweight)
+
 ## Introduction
 
 - Flyweight pattern is used to optimize the memory for similary typed objects during the runtime.
