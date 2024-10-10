@@ -1,6 +1,7 @@
 - [<i class="fa-solid fa-house"></i> Home](/)
 - **Creational Design Patterns**
 - [Introduction](creational/)
+- [Singleton Pattern](creational/singleton.md)
 - [Builder Pattern](creational/builder.md)
 - [Prototype Pattern](creational/prototype.md)
 - [Factory Pattern](creational/factory.md)
@@ -11,5 +12,6 @@
 - [Composite Pattern](structural/composite.md)
 - [Facade Pattern](structural/facade.md)
 - [Decorator Pattern](structural/decorator.md)
+- [Flyweight Pattern](structural/flyweight.md)
 - **Behavioural Design Patterns**
 - [Introduction](behavioural/)
