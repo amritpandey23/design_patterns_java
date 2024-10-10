@@ -3,3 +3,4 @@
 - [Composite Pattern](structural/composite.md)
 - [Facade Pattern](structural/facade.md)
 - [Decorator Pattern](structural/decorator.md)
+- [Flyweight Pattern](structural/flyweight.md)
