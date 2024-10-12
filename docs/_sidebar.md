@@ -14,5 +14,3 @@
 - [Decorator Pattern](structural/decorator.md)
 - [Flyweight Pattern](structural/flyweight.md)
 - [Proxy Pattern](structural/proxy.md)
-- **Behavioural Design Patterns**
-- [Introduction](behavioural/)
