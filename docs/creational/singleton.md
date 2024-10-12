@@ -3,94 +3,164 @@
 > [!NOTE]
 > Find source code [here](https://github.com/amritpandey23/design_patterns_java/tree/master/com.amrit.designpatterns.creational/src/com/amrit/designpatterns/creational/singleton/example/db)
 
-## Introduction
+## What is the Singleton pattern?
 
-Singleton pattern is used to restrict user in spawning multiple instances of an object.
-Usually if a job has to be done via single object instance and creating multiple instances of an object causes anomalous behavior, Singleton pattern is used.
+The Singleton pattern allows global, single-point access to just one unique instance of an object during runtime. By using the Singleton pattern, we ensure that only one instance of an object is created, and any future instantiations are prevented.
 
-## Concepts
+### Concepts
 
 - Only one instance is instantiated.
-- Gurantees control of resource.
+- Guarantees control of a resource.
 - Lazily loaded.
-- Example:
+- Examples:
   - Runtime
   - Logger
   - Garbage Collector
 
-## Design
+### Design
 
-- Class is responsible for lifecycle
-- Static in nature
-- Needs to be thread safe
-- Private instance
-- Private constructor
+- Class is responsible for its lifecycle.
+- Static in nature.
+- Needs to be thread-safe.
+- Private instance.
+- Private constructor.
 - No parameters!
 
-## Example
+```mermaid
+classDiagram
+    class Singleton {
+        - INSTANCE: Singleton
+        - Singleton()
+        + getInstance(): Singleton
+    }
+```
 
-We will be demonstrating three ways of creating a singleton class.
+## Where do we use it?
 
-### Type-1
+We use Singleton when multiple components of a program need to utilize a common functionality that must be served by only one object. A typical example is a logger. A logger only needs to exist once in the program's runtime because its functionality is global and can be reused by many components.
 
-Cons: Non-thread safe
-
-```java
-public class Singleton{
-    private static Singleton instance;
-
-    private Singleton() {
-
+```mermaid
+classDiagram
+    class Logger {
+        - Logger()
+        + log(message: String)
+        + getInstance(): Logger
     }
 
-    public static Singleton getInstance() {
+    class ComponentA {
+        + doTask()
+    }
+
+    class ComponentB {
+        + execute()
+    }
+
+    class ComponentC {
+        + process()
+    }
+
+    Logger <|-- ComponentA : log
+    Logger <|-- ComponentB : log
+    Logger <|-- ComponentC : log
+```
+
+## Recipe for Singleton
+
+### Follow the steps to convert an object to a singleton object:
+
+1. Make the constructor private.
+2. Declare a private static variable with the object's type, let's call it `instance`.
+3. Create a static public method `getInstance()` that creates and returns the object, storing this object in the `instance` variable upon the first creation.
+
+Here is the original object:
+
+```java
+class MyObjectClass {
+    public MyObjectClass() {}
+}
+```
+
+Modify the class as follows:
+
+```java
+class MyObjectClass {
+    private static MyObjectClass instance;
+
+    private MyObjectClass() {}
+
+    public static MyObjectClass getInstance() {
         if (instance == null) {
-            instance = new Singleton();
+            instance = new MyObjectClass();
         }
         return instance;
     }
 }
 ```
 
-### Type-2
+In Java, we may encounter the double creation of an object instance when running the `getInstance()` method from multiple threads. To prevent this, we can use various workarounds as follows:
 
-Pros: Thread-safe
-Cons: Synchronization overhead
+### Eager Instantiation
 
 ```java
-public class Singleton{
-    private static Singleton instance;
+class MyObjectClass {
+    private static MyObjectClass instance = new MyObjectClass();
 
-    private Singleton() {
+    private MyObjectClass() {}
 
-    }
-
-    public static Singleton getInstance() {
-        Singleton result = instance;
-        if (result == null) {
-            synchronized(Singleton.class) {
-                if (result == null) {
-                    result = new Singleton();
-                    instance = result;
-                }
-            }
-        }
-        return result;
+    public static MyObjectClass getInstance() {
+        return instance;
     }
 }
 ```
 
-### Type-3
+### Synchronization
 
 ```java
-public class Singleton{
-    private Singleton() {
+class MyObjectClass {
+    private static MyObjectClass instance;
 
+    private MyObjectClass() {}
+
+    public static MyObjectClass getInstance() {
+        if (instance == null) {
+            synchronized (MyObjectClass.class) {
+                if (instance == null) {
+                    instance = new MyObjectClass();
+                }
+            }
+        }
+        return instance;
     }
+}
+```
 
+### Lazy Loading
+
+```java
+class MyObjectClass {
     private static class LazyLoader {
-        public static Singleton INSTANCE = new Singleton();
+        public static final MyObjectClass INSTANCE = new MyObjectClass();
     }
+
+    private MyObjectClass() {}
+
+    public static MyObjectClass getInstance() {
+        return LazyLoader.INSTANCE;
+    }
+}
+```
+
+## Template
+
+Here is a template for a Singleton class in Java:
+
+```java
+class Singleton {
+    private static class LazyLoader {
+        public static final Singleton INSTANCE = new Singleton();
+    }
+
+    private Singleton() {}
 
     public static Singleton getInstance() {
         return LazyLoader.INSTANCE;
@@ -98,22 +168,21 @@ public class Singleton{
 }
 ```
 
-Pros: Thread-safe, Lazy loaded
+Here is a template for a Singleton class in Python:
 
-```java
-public class Play {
-    public static void main(String[] args) {
-        Singleton obj = Singleton.getInstance();
-        Singleton obj2 = Singleton.getInstance();
+```python
+class Singleton:
+    class _LazyLoader:
+        INSTANCE = None
 
-        System.out.println(obj);
-        System.out.println(obj2); // same object
-    }
-}
+    def __new__(cls):
+        if Singleton._LazyLoader.INSTANCE is None:
+            Singleton._LazyLoader.INSTANCE = super(Singleton, cls).__new__(cls)
+        return Singleton._LazyLoader.INSTANCE
 ```
 
 ## Pitfalls
 
-- Difficult to unit test
-- Requires thread-safety
-- Cannot use parameters to modify behaviour
+- Difficult to unit test.
+- Requires thread safety.
+- Cannot use parameters to modify behavior.
