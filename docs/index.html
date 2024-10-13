@@ -7,7 +7,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta name="description" content="Description">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-	<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/LIGMATV/docsify-theme-github/github.css">
+	<link rel="icon" href="img/favicon.png" type="image/x-icon">
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/vue.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 		integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
 		crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -15,19 +16,23 @@
 
 <body>
 	<div id="app">Loading...</div>
+
 	<script>
 		window.$docsify = {
-			name: 'Design Patterns in Java',
 			search: 'auto',
 			repo: '',
 			loadSidebar: true,
 			loadNavbar: true,
-			subMaxLevel: 1,
+			maxLevel: 4,
+			subMaxLevel: 2,
 			mermaidConfig: {
 				querySelector: ".mermaid"
-			}
-		}
+			},
+			auto2top: true,
+			paths: 'auto',
+		};
 	</script>
+
 	<script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
 	<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
 	<script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
@@ -40,7 +45,6 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"
 		integrity="sha512-u3fPA7V8qQmhBPNT5quvaXVa1mnnLSXUep5PS1qo5NRzHwG19aHmNJnj1Q8hpA/nBWZtZD4r4AX6YOt5ynLN2g=="
 		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-	<!-- Latest -->
 	<script src="https://unpkg.com/docsify-plugin-flexible-alerts"></script>
 </body>
 

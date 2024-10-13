@@ -1,4 +1,3 @@
-- [<i class="fa-solid fa-house"></i>](/)
-- [Creational](creational/)
-- [Structural](structural/)
-- [Behavioural](behavioural/)
+- [<i class="fa-solid fa-house"></i> Home](/)
+- [ <i class="fa-solid fa-hammer"></i> Creational Patterns](creational/)
+- [<i class="fa-solid fa-building"></i> Structural Patterns](structural/)
